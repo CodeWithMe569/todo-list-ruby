@@ -32,29 +32,36 @@ def modify_item(index)
     puts $todos.inspect
 end
 
-puts "Tell which function to perform"
-puts "1. add a new item"
-puts "2. delete an item"
-puts "3. display all items"
-puts "4. modify an item"
+def command
+    puts "Tell which function to perform"
+    puts "1. add a new item"
+    puts "2. delete an item"
+    puts "3. display all items"
+    puts "4. modify an item"
+end
 
-input = gets.chomp.to_i
-
-if input==1
-	puts "enter the name of the item"
-	item = gets.chomp
-	add_item(item)
-elsif input==2
-	puts "enter the index of the item"
-	ind = gets.chomp.to_i
-	$todos.delete_at(ind)
-	puts $todos.inspect
-elsif input==3
-	puts $todos.inspect
-elsif input==4
-    puts "enter the index of the item you want to edit"
-    index = gets.chomp.to_i
-    modify_item(index)
-else
-	puts "Wrong input"
+loop do
+    command
+    input = gets.chomp.to_i
+    if input==1
+	    puts "enter the name of the item"
+	    item = gets.chomp
+	    add_item(item)
+    elsif input==2
+	    puts "enter the index of the item"
+	    ind = gets.chomp.to_i
+	    $todos.delete_at(ind)
+    	puts $todos.inspect
+    elsif input==3
+	    puts $todos.inspect
+    elsif input==4
+        puts "enter the index of the item you want to edit"
+        index = gets.chomp.to_i
+        modify_item(index)
+    else
+	    puts "Wrong input"
+    end
+    puts "Do you want to continue? (yes/no)"
+    ch = gets.chomp.downcase
+    break if ch!="yes"
 end
