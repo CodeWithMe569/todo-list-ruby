@@ -19,6 +19,7 @@ def add_item(text)
 end
 
 def modify_item(index)
+    # find item using index starting from 0
     item = $todos.find { |todo| todo[:id] == index }
 
     if item
@@ -50,6 +51,7 @@ loop do
     elsif input==2
 	    puts "enter the index of the item"
 	    ind = gets.chomp.to_i
+        # starting from 1
 	    $todos.delete_at(ind)
     	puts $todos.inspect
     elsif input==3
